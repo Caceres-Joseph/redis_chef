@@ -2,9 +2,9 @@
 # Cookbook Name::       redis
 # Description::         Configure Sentinel slave nodes
 # Recipe::              config_slaves.rb
-# Author::              Giorgio Balconi
+# Author::              
 #
-# Copyright 2018, Giorgio Balconi
+# Copyright 2018, 
 #
 
 # Configure slave node templates

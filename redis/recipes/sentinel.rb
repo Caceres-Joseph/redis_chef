@@ -2,9 +2,9 @@
 # Cookbook Name::       redis
 # Description::         Install redis_sentinel and configure master node
 # Recipe::              sentinel.rb
-# Author::              Giorgio Balconi
+# Author::              
 #
-# Copyright 2018, Giorgio Balconi
+# Copyright 2018, 
 #
 
 # Install redis_server

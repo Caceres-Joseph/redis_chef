@@ -2,9 +2,9 @@
 # Cookbook Name::       redis
 # Description::         Install redis_server and configure master node
 # Recipe::              default
-# Author::              Giorgio Balconi
+# Author::              
 #
-# Copyright 2018, Giorgio Balconi
+# Copyright 2018, 
 #
 
 # Include apt recipe to add redis repository
