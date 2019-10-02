@@ -15,9 +15,19 @@
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 #
-include_recipe 'python::pip'
 
-python_pip 'awscli' do
-  virtualenv node['awscli']['virtualenv'] if node['awscli']['virtualenv']
+apt_package "python-pip" do
   action :install
 end
+
+execute "install awscli" do
+  command "pip install awscli"
+  action :run
+end
+
+
+#bash "echo something" do
+#  code <<-EOF
+#    echo 'I am a chef!'
+#  EOF
+#end
