@@ -61,11 +61,11 @@ default[:sentinel][:master_name]    = "mymaster"
 
 
 #AWSLCI
-default['awscli']['virtualenv'] = nil
-default['awscli']['windows_url'] = 'https://s3.amazonaws.com/aws-cli/AWSCLI64.msi'
-default['awscli']['binary'] = case node['platform_family']
-                              when 'windows'
-                                '"C:\Program Files\Amazon\AWSCLI\aws"'
-                              else
-                                'aws'
-                              end
+#default['awscli']['virtualenv'] = nil
+#default['awscli']['windows_url'] = 'https://s3.amazonaws.com/aws-cli/AWSCLI64.msi'
+#default['awscli']['binary'] = case node['platform_family']
+#                              when 'windows'
+#                                '"C:\Program Files\Amazon\AWSCLI\aws"'
+#                              else
+##                                'aws'
+#                             end
