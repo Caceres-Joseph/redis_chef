@@ -16,18 +16,20 @@
 # language governing permissions and limitations under the License.
 #
 
-apt_package "python-pip" do
+# install the mongo ruby gem at compile time to make it globally available
+gem_package 'aws-sdk' do
   action :install
 end
 
-execute "install awscli" do
-  command "pip install awscli"
-  action :run
-end
+Chef::Log.warn("Installing AWS SDK")
 
 
-#bash "echo something" do
-#  code <<-EOF
-#    echo 'I am a chef!'
-#  EOF
+#apt_package "python-pip" do
+#  action :install
 #end
+
+#execute "install awscli" do
+#  command "pip install awscli"
+#  action :run
+#end
+
