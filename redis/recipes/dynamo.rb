@@ -17,8 +17,8 @@ begin
 #  dynamodb.put_item(params)
   dynamodb.put_item({
     item: {
-      'ipAddress': node['ipaddress'],
-      'host': node['hostname']
+      "ipAddress"=> node['ipaddress'],
+      "host"=>  node['hostname']
     },
     table_name: 'joseph-chef',
   })
