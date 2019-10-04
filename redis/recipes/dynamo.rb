@@ -6,7 +6,7 @@ dynamodb = Aws::DynamoDB::Client.new(region: 'us-west-2')
 
 begin
   
-  result = client.get_item({
+  result = dynamodb.get_item({
     item: {
       "ip" =>  node['ipaddress']
     },  
