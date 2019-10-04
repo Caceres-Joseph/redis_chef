@@ -6,7 +6,7 @@ dynamodb = Aws::DynamoDB::Client.new(region: 'us-west-2')
 
 begin
 #  dynamodb.put_item(params)
-  dynamodb.put_item({item: {"ipAddress"=> node['ipaddress'], "host" =>  node['hostname']}, table_name : "joseph-chef"})
+  dynamodb.put_item({item: {"ipAddress"=> node['ipaddress'], "host" =>  node['hostname']}, table_name: "joseph-chef"})
   puts 'Added ip: '
 rescue  Aws::DynamoDB::Errors::ServiceError => error
   puts 'Unable to add ip:'
