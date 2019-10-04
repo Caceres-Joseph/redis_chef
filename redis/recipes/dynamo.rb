@@ -13,7 +13,7 @@ begin
     table_name: "chef-joseph" 
   })
 
-  if result.item == nil
+  if result.item['ip'] == nil
     resp = dynamodb.put_item({
       item: {
         "ip" =>  node['ipaddress'], 
