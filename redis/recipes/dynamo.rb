@@ -2,7 +2,7 @@
 require 'aws-sdk-dynamodb'  # v2: require 'aws-sdk'
 
 # Create dynamodb client in us-west-2 region
-dynamodb = Aws::DynamoDB::Client.new(region: node["opsworks"]["instance"]["region"])
+dynamodb = Aws::DynamoDB::Client.new(region: 'us-west-2')
 item = {
     ipAddress: node['ipaddress'],
     host: node['hostname']
