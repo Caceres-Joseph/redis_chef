@@ -20,7 +20,7 @@ begin
       "ipAddress"=> node['ipaddress'],
       "host" =>  node['hostname']
     },
-    table_name : "joseph-chef",
+    table_name : "joseph-chef"
   })
 
   puts 'Added ip: '
