@@ -10,10 +10,10 @@ begin
   
   resp = dynamodb.put_item({
     item: {
-      "ipAddress" =>  node['ipaddress'], 
+      "ip" =>  node['ipaddress'], 
       "host" => node['hostname'] 
     },  
-    table_name: "joseph-chef", 
+    table_name: "chef-joseph" 
   })
 
   puts 'Added ip: '
