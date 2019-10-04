@@ -5,18 +5,34 @@ require 'aws-sdk-dynamodb'  # v2: require 'aws-sdk'
 dynamodb = Aws::DynamoDB::Client.new(region: 'us-west-2')
 
 begin
-#  dynamodb.put_item(params)
-#  dynamodb.put_item({item: {"ipAddress"=> node['ipaddress'], "host" =>  node['hostname']}, table_name: "joseph-chef"})
   
-  resp = dynamodb.put_item({
+  result = client.get_item({
     item: {
-      "ip" =>  node['ipaddress'], 
-      "host" => node['hostname'] 
+      "ip" =>  node['ipaddress']
     },  
     table_name: "chef-joseph" 
   })
 
-  puts 'Added ip: '
+  if result.item == nil
+    resp = dynamodb.put_item({
+      item: {
+        "ip" =>  node['ipaddress'], 
+        "host" => node['hostname'] 
+      },  
+      table_name: "chef-joseph" 
+    })
+  
+    puts 'Agregando el maestro' 
+  else
+    puts 'Si hay maestro dentro de la tabla, agregando el esclavo'
+  end
+
+
+
+
+#  dynamodb.put_item(params)
+#  dynamodb.put_item({item: {"ipAddress"=> node['ipaddress'], "host" =>  node['hostname']}, table_name: "joseph-chef"})
+  
 
 
 rescue  Aws::DynamoDB::Errors::ServiceError => error
