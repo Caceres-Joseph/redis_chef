@@ -7,13 +7,13 @@ dynamodb = Aws::DynamoDB::Client.new(region: 'us-west-2')
 begin
   
   result = dynamodb.get_item({
-    item: {
+    key: {
       "ip" =>  node['ipaddress']
-    },  
+    }, 
     table_name: "chef-joseph" 
   })
 
-  if result.item['ip'] == nil
+  if result.item == nil
     resp = dynamodb.put_item({
       item: {
         "ip" =>  node['ipaddress'], 
