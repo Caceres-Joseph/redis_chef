@@ -21,7 +21,7 @@ begin
       },  
       table_name: "chef-joseph" 
     })
-    #node.default[:redis][:server][:addr] = result.item['ip']
+    node.default[:redis][:server][:addr] = result.item['ip']
     puts 'Agregando el maestro' 
     puts node.default[:redis][:server][:addr] = result.item['ip']
   else
