@@ -11,11 +11,17 @@
 priority = 100
 node.default[:redis][:slave] = "yes"
 node[:redis][:ports].each do |port|
+
+  #Configurando el esclavo
+  puts 'Configurando el esclavo'
+  
+  
   # Change parameters for more different instances of redis
   node.default[:redis][:pid_file]          = "/var/run/redis-#{port}.pid"
   node.default[:redis][:server][:port]     = port
   node.default[:redis][:log_dir]           = "/var/log/redis-#{port}"
   node.default[:redis][:data_dir]          = "/var/lib/redis-#{port}"
+  
 
   # Create log directory for redis slave
   directory node[:redis][:log_dir] do

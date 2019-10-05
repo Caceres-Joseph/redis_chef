@@ -21,10 +21,12 @@ begin
       },  
       table_name: "chef-joseph" 
     })
-  
+    node.default[:redis][:master_server] = result.item['ip']
     puts 'Agregando el maestro' 
+    puts node.default[:redis][:master_server]
   else
     puts 'Si hay maestro dentro de la tabla, agregando el esclavo'
+    node.default[:redis][:slave] = "yes"
   end
 
 
