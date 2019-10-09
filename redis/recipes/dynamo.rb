@@ -8,7 +8,7 @@ begin
   
   result = dynamodb.get_item({
     key: {
-      "ip" =>  node['ipaddress']
+      "role" =>  "master"
     }, 
     table_name: "chef-joseph" 
   })
@@ -16,6 +16,7 @@ begin
   if result.item == nil
     resp = dynamodb.put_item({
       item: {
+        "role" => "master"
         "ip" =>  node['ipaddress'], 
         "host" => node['hostname'] 
       },  
