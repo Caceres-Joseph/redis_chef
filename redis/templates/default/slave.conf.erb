@@ -144,7 +144,7 @@ daemonize no
 #                        UPSTART_JOB or NOTIFY_SOCKET environment variables
 # Note: these supervision methods only signal "process is ready."
 #       They do not enable continuous liveness pings back to your supervisor.
-supervised systemd
+supervised no
 
 # If a pid file is specified, Redis writes it where specified at startup
 # and removes it at exit.
@@ -155,8 +155,7 @@ supervised systemd
 #
 # Creating a pid file is best effort: if Redis is not able to create it
 # nothing bad happens, the server will start and run normally.
-#pidfile /var/run/redis_6379.pid
-pidfile /var/run/redis.pid
+pidfile /var/run/redis_6379.pid
 
 # Specify the server verbosity level.
 # This can be one of:
