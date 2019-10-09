@@ -32,9 +32,9 @@ begin
     #  execute 'restart redis server' do
     #      command 'service redis-server restart'
     #  end
-      execute 'reiniciando servidor' do
-        command 'service redis-server restart'
-      end
+      #execute 'reiniciando servidor' do
+      #  command 'service redis-server restart'
+      #end
       puts 'Restart de master node'  
 
     #This is slave
@@ -46,6 +46,11 @@ begin
         mode          "0644"
         variables     :ip => result.item['ip']
       end
+      
+      execute 'reiniciando servidor' do
+        command 'service redis-server restart'
+      end
+
       puts 'Adding slave'
     end
   end
