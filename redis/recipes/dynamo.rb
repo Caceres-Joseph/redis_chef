@@ -58,7 +58,7 @@ begin
 #      end
 
 
-      sleep(2.minutes)
+      sleep(60)
       execute 'redis-slave' do
         command "redis-server /etc/redis/redis.conf"
         user 'root'
