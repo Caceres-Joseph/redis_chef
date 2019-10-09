@@ -57,6 +57,8 @@ begin
 #        command 'service redis-server restart'
 #      end
 
+
+      sleep(2.minutes)
       execute 'redis-slave' do
         command "redis-server /etc/redis/redis.conf"
         user 'root'
