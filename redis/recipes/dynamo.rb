@@ -28,9 +28,9 @@ begin
     #If this instance is master
     if result.item['ip'] == node['ipaddress']
 
-      execute 'restart redis server' do
-          command 'service redis-server restart'
-      end
+    #  execute 'restart redis server' do
+    #      command 'service redis-server restart'
+    #  end
       puts 'Restart de master node'  
 
     #This is slave
