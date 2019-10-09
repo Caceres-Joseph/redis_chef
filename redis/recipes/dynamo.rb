@@ -16,8 +16,8 @@ begin
   if result.item == nil
     resp = dynamodb.put_item({
       item: {
-        "role" => "master"
-        "ip" =>  node['ipaddress'], 
+        "role" => "master",
+        "ip" => node['ipaddress'], 
         "host" => node['hostname'] 
       },  
       table_name: "chef-joseph" 
