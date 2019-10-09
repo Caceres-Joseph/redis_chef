@@ -32,6 +32,9 @@ begin
     #  execute 'restart redis server' do
     #      command 'service redis-server restart'
     #  end
+      execute 'reiniciando servidor' do
+        command 'service redis-server restart'
+      end
       puts 'Restart de master node'  
 
     #This is slave
