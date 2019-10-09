@@ -35,6 +35,12 @@ begin
       #execute 'reiniciando servidor' do
       #  command 'service redis-server restart'
       #end
+      
+      execute 'redis-server' do
+        command "redis-server /etc/redis/redis.conf"
+        user 'root'
+      end
+
       puts 'Restart de master node'  
 
     #This is slave
@@ -47,8 +53,13 @@ begin
         variables     :ip => result.item['ip']
       end
       
-      execute 'reiniciando servidor' do
-        command 'service redis-server restart'
+#      execute 'reiniciando servidor' do
+#        command 'service redis-server restart'
+#      end
+
+      execute 'redis-slave' do
+        command "redis-server /etc/redis/redis.conf"
+        user 'root'
       end
 
       puts 'Adding slave'
