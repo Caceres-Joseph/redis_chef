@@ -20,23 +20,31 @@ begin
         "host" => node['hostname'] 
       },  
       table_name: "chef-joseph" 
-    })
-    node.default[:redis][:server][:addr] = result.item['ip']
-    puts 'Agregando el maestro' 
-    puts node.default[:redis][:server][:addr] = result.item['ip']
+    }) 
+    puts 'Insert the master in layer'  
   else
-    puts 'Si hay maestro dentro de la tabla, agregando el esclavo'
-    node.default[:redis][:slave] = "yes"
+
+
+    #If this instance is master
+    if result.item['ip'] == node['ipaddress']
+
+      execute 'restart redis server' do
+          command 'service redis-server restart'
+      end
+      puts 'Restart de master node'  
+
+    #This is slave
+    else 
+      template "#{node[:redis][:conf_dir]}/redis.conf" do
+        source        "slave.conf.erb"
+        owner         "root"
+        group         "root"
+        mode          "0644"
+        variables     :ip => result.item['ip']
+      end
+      puts 'Adding slave'
+    end
   end
-
-
-
-
-#  dynamodb.put_item(params)
-#  dynamodb.put_item({item: {"ipAddress"=> node['ipaddress'], "host" =>  node['hostname']}, table_name: "joseph-chef"})
-  
-
-
 rescue  Aws::DynamoDB::Errors::ServiceError => error
   puts 'Unable to add ip:'
   puts error.message
