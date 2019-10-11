@@ -56,15 +56,18 @@ begin
         variables     :ip => result.item['ip']
       end
       
-#      execute 'reiniciando servidor' do
-#        command 'service redis-server restart'
-#      end
 
  
       execute 'redis-slave' do
         command "redis-server /etc/redis/redis.conf"
         user 'root'
       end
+
+      execute 'reiniciando servidor' do
+        command 'service redis-server restart'
+        user 'root'
+      end
+
 
       puts 'Adding slave'
     end
