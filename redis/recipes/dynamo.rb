@@ -45,6 +45,9 @@ begin
 
     #This is slave
     else 
+
+      
+      puts result.item['ip'] 
       template "#{node[:redis][:conf_dir]}/redis.conf" do
         source        "slave.conf.erb"
         owner         "root"
@@ -57,8 +60,7 @@ begin
 #        command 'service redis-server restart'
 #      end
 
-
-      sleep(60)
+ 
       execute 'redis-slave' do
         command "redis-server /etc/redis/redis.conf"
         user 'root'
