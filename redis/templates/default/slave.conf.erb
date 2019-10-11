@@ -85,7 +85,7 @@ bind 127.0.0.1
 # you are sure you want clients from other hosts to connect to Redis
 # even if no authentication is configured, nor a specific set of interfaces
 # are explicitly listed using the "bind" directive.
-protected-mode yes
+protected-mode no
 
 # Accept connections on the specified port, default is 6379 (IANA #815344).
 # If port 0 is specified Redis will not listen on a TCP socket.
@@ -110,7 +110,7 @@ tcp-backlog 511
 # unixsocketperm 700
 
 # Close the connection after a client is idle for N seconds (0 to disable)
-timeout 0
+timeout 60
 
 # TCP keepalive.
 #
@@ -133,7 +133,7 @@ tcp-keepalive 60
 
 # By default Redis does not run as a daemon. Use 'yes' if you need it.
 # Note that Redis will write a pid file in /var/run/redis.pid when daemonized.
-daemonize no
+daemonize yes
 
 # If you run Redis from upstart or systemd, Redis can interact with your
 # supervision tree. Options:
@@ -155,7 +155,7 @@ supervised no
 #
 # Creating a pid file is best effort: if Redis is not able to create it
 # nothing bad happens, the server will start and run normally.
-pidfile /var/run/redis_6379.pid
+pidfile /var/run/redis/redis-server.pid
 
 # Specify the server verbosity level.
 # This can be one of:
@@ -190,7 +190,7 @@ databases 16
 # so for example it is possible to configure the slave to save the DB with a
 # different interval, or to listen to another port, and so on.
 
-slaveof <%= @ip %> 6379
+slaveof <%= @ipmaster %> 6379
 
 # By default Redis shows an ASCII art logo only when started to log to the
 # standard output and if the standard output is a TTY. Basically this means
